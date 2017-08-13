@@ -3,9 +3,6 @@
 --版本号修改
 buildToolsVersion "26.0.1"
 
---查找替换
-android-10 --> android-25
-
 ---------------------------------------------------------
 --生成keystore
 keytool -genkey -alias gamekey -keyalg RSA -validity 40000 -keystore gamekey.keystore
