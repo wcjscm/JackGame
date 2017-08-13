@@ -58,13 +58,16 @@ bool ${signature_name}(JSContext *cx, uint32_t argc, jsval *vp)
 
             #if not $is_ctor
             js_type_class_t *typeClass = js_get_type_from_native<${namespaced_class_name}>(cobj);
-            // obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
             JS::RootedObject proto(cx, typeClass->proto.ref());
             JS::RootedObject parent(cx, typeClass->parentProto.ref());
             obj = JS_NewObject(cx, typeClass->jsclass, proto, parent);
             #end if
             js_proxy_t* p = jsb_new_proxy(cobj, obj);
+            #if $is_ref_class
             jsb_ref_init(cx, &p->obj, cobj, "${namespaced_class_name}");
+            #else
+            jsb_non_ref_init(cx, &p->obj, cobj, "${namespaced_class_name}");
+            #end if
         #else
             #if str($func.ret_type) != "void"
                 #if $func.ret_type.is_enum

@@ -128,6 +128,10 @@ public:
      * @param dt        The animation duration.
      */
     void setContentOffsetInDuration(Vec2 offset, float dt); 
+    /**
+     * Halts the movement animation of the inner content started with setContentOffset() or setContentOffsetInDuration()
+     */
+    void stopAnimatedContentOffset();
 
     void setZoomScale(float s);
     /**
@@ -192,6 +196,7 @@ public:
 
     void setTouchEnabled(bool enabled);
 	bool isTouchEnabled() const;
+    void setSwallowTouches(bool needSwallow);
     bool isDragging() const {return _dragging;}
     bool isTouchMoved() const { return _touchMoved; }
     bool isBounceable() const { return _bounceable; }
@@ -255,7 +260,7 @@ public:
 
     virtual void removeAllChildren() override;
     virtual void removeAllChildrenWithCleanup(bool cleanup) override;
-    virtual void removeChild(Node* child, bool cleaup = true) override;
+    virtual void removeChild(Node* child, bool cleanup = true) override;
     /**
      * CCActionTweenDelegate
      */
@@ -378,6 +383,11 @@ protected:
     
     CustomCommand _beforeDrawCommand;
     CustomCommand _afterDrawCommand;
+
+    /**
+     * Action created with setContentOffsetInDuration(), saved so it can be halted
+     */
+    Action* _animatedScrollAction;
 };
 
 

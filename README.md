@@ -1,5 +1,7 @@
 # JackGame
 
+cocos new JackGame -p com.jackgame.chesscards -l lua -d ../NewGame
+
 --版本号修改
 buildToolsVersion "26.0.1"
 
