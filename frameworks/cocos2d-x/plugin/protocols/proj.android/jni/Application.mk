@@ -1,5 +1,5 @@
 # it is needed for ndk-r5
-APP_PLATFORM := android-10
+APP_PLATFORM := android-25
 APP_STL := c++_static
 APP_CPPFLAGS := -frtti -std=c++11 -fsigned-char
 APP_MODULES := PluginProtocolStatic
