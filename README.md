@@ -2,8 +2,9 @@
 
 cocos new JackGame -p com.jackgame.chesscards -l lua -d ../NewGame
 
---版本号修改
-buildToolsVersion "26.0.1"
+set buildToolsVersion "26.0.1"
+
+AppActivity.java add code: import android.os.Bundle;
 
 ---------------------------------------------------------
 --生成keystore
